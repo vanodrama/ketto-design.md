@@ -5,10 +5,23 @@ description: A story-led crowdfunding and giving platform built on a clean near-
 
 colors:
   # Brand
-  primary: "#288B91"
-  primary-hover: "#1D6266"
-  primary-pressed: "#174A4D"       # Figma name: ketto/tertiary
-  primary-light: "#DDF6F7"         # Figma name: ketto/disabled → renamed ketto/light
+  # Teal scale (500 = brand teal)
+  teal-50: "#EEFAFB"
+  teal-100: "#DDF6F7"              # Figma name: ketto/disabled → renamed ketto/light
+  teal-200: "#B0DBDE"
+  teal-300: "#82C0C4"
+  teal-400: "#55A6AA"
+  teal-500: "#288B91"              # Figma name: ketto/primary
+  teal-600: "#22767C"
+  teal-700: "#1D6266"              # Figma name: ketto/on-hover
+  teal-800: "#174A4D"              # Figma name: ketto/tertiary
+  teal-900: "#0F3032"
+  # Teal roles
+  primary: "{colors.teal-500}"
+  primary-button: "{colors.teal-600}"
+  primary-hover: "{colors.teal-700}"
+  primary-pressed: "{colors.teal-800}"
+  primary-light: "{colors.teal-100}"
   on-primary: "#FCFCFC"
   # Neutrals
   white: "#FCFCFC"
@@ -138,20 +151,26 @@ typography:
     fontSize: 10px
     fontWeight: 700
     lineHeight: 1.3
-  label:
+  label-1:
     fontFamily: "'Proxima Nova', Figtree, Montserrat, sans-serif"
     fontSize: 12px
     fontWeight: 700
     lineHeight: 1.3
     letterSpacing: 0.1em
     textTransform: uppercase
-    # Use for UPPERCASE tags, labels, and small button labels
+  label-2:
+    fontFamily: "'Proxima Nova', Figtree, Montserrat, sans-serif"
+    fontSize: 12px
+    fontWeight: 700
+    lineHeight: 1.3
+    letterSpacing: 0.1em
+    textTransform: uppercase
 
 rounded:
   xs: 2px   # checkboxes only
   sm: 8px   # snackbars, plain tooltips
-  base: 16px   # elements 110–314px
-  lg: 24px   # elements ≥315px, and <110px minimum
+  base: 16px   # elements 100–314px
+  lg: 24px   # elements ≥315px, and <100px minimum
   full: 9999px   # buttons, chips, avatars, icon buttons
 
 spacing:
@@ -170,6 +189,7 @@ grid:
   mobile-ios:     { width: 375pt, columns: 12, margin: 16px, gutter: 8px, gutter-loose: 16px }
   desktop:        { breakpoint: 768px, max-width: 1440px, columns: 12, gutter: 24px, margin: TBD }
   module:         { padding-y: 24px, gap: 16px, gap-loose: 24px, between-modules: 0px }
+  card-widths:    { full: 343px, two-across: 168px, three-across: 109px, carousel-lg: 255px, carousel-md: 226px, carousel-sm: 197px, campaign: 265px }
 
 elevation:
   flat: none
@@ -177,7 +197,7 @@ elevation:
 
 components:
   button-primary-lg:
-    backgroundColor: "{colors.primary}"
+    backgroundColor: "{colors.primary-button}"
     textColor: "{colors.on-primary}"
     typography: "{typography.subtitle-lg}"
     rounded: "{rounded.full}"
@@ -185,7 +205,7 @@ components:
     height: 60px
     minWidth: 315px
   button-primary-md:
-    backgroundColor: "{colors.primary}"
+    backgroundColor: "{colors.primary-button}"
     textColor: "{colors.on-primary}"
     typography: "{typography.subtitle-base}"
     rounded: "{rounded.full}"
@@ -193,9 +213,9 @@ components:
     height: 48px
     minWidth: 113px
   button-primary-sm:
-    backgroundColor: "{colors.primary}"
+    backgroundColor: "{colors.primary-button}"
     textColor: "{colors.on-primary}"
-    typography: "{typography.label}"
+    typography: "{typography.label-2}"
     rounded: "{rounded.full}"
     padding: 8px 16px
     height: 32px
@@ -206,20 +226,20 @@ components:
     backgroundColor: "{colors.primary-pressed}"
   button-primary-white:
     backgroundColor: "{colors.white}"
-    textColor: "{colors.primary}"
+    textColor: "{colors.primary-button}"
     rounded: "{rounded.full}"
   button-tonal:
     backgroundColor: "{colors.primary-light}"
-    textColor: "{colors.primary}"
+    textColor: "{colors.primary-button}"
     rounded: "{rounded.full}"
   button-ghost:
     backgroundColor: transparent
     borderColor: "{colors.black-2}"
-    textColor: "{colors.primary}"
+    textColor: "{colors.primary-button}"
     rounded: "{rounded.full}"
   button-text:
     backgroundColor: transparent
-    textColor: "{colors.primary}"
+    textColor: "{colors.primary-button}"
   button-danger:
     backgroundColor: "{colors.error}"
     textColor: "{colors.on-primary}"
@@ -231,7 +251,6 @@ components:
   icon-button:
     rounded: "{rounded.full}"
     sizes: [60px, 48px, 32px]
-    iconSizes: [24px, 20px, 16px]   # per button size
   chip:
     backgroundColor: transparent
     borderColor: "{colors.black-2}"
@@ -299,7 +318,7 @@ components:
   campaign-card-urgency-tag:
     backgroundColor: "{colors.white}"
     textColor: "{colors.error}"
-    typography: "{typography.label}"
+    typography: "{typography.label-1}"
     rounded: "0 {rounded.lg} 0 {rounded.lg}"
   campaign-card-title:
     textColor: "{colors.black-6}"
@@ -320,29 +339,23 @@ components:
     size: 16px
   campaign-card-donate:
     component: "{components.button-primary-sm}"
-    typography: "{typography.label}"
+    typography: "{typography.label-1}"
     height: 32px
     minWidth: 84px              # width grows with the label
   cause-card:
     backgroundColor: "{colors.white}"
     rounded: "{rounded.lg}"
     shadow: "{elevation.float}"
-    width: 255px               # Large card width
-    height: 310px              # Fixed height
-    padding: 16px              # All sides
   cause-card-image:
-    width: 265px               # Fixed, edge to edge
-    height: 165px              # 8:5 aspect ratio
+    aspectRatio: "8:5"
   cause-card-new-badge:
     backgroundColor: "{colors.blue-3}"
     textColor: "{colors.white}"
     typography: "{typography.subtitle-sm}"
     rounded: "{rounded.full}"
-    width: 48px
-    height: 18px
   cause-card-title:
     textColor: "{colors.black-6}"
-    typography: "{typography.h4}"
+    typography: "{typography.h5}"
   cause-card-description:
     textColor: "{colors.black-4}"
     typography: "{typography.body-lg}"
@@ -351,7 +364,7 @@ components:
     typography: "{typography.subtitle-lg}"
   cause-card-cta:
     component: "{components.button-primary-md}"
-    typography: "{typography.label}"
+    typography: "{typography.label-1}"
   amount-picker:
     container: "{components.bottom-sheet}"
     padding: 24px 16px 0
@@ -368,7 +381,7 @@ components:
     borderWidth: 1px
     textColor: "{colors.black-6}"
     rounded: "{rounded.base}"    # 109px → 16px (Roundness rule)
-    size: 109px   # 1:1:1 element width
+    size: 109px   # three-across card width
     gap: 8px
   amount-tile-amount:
     typography: "{typography.h5}"   # bold weight
@@ -376,14 +389,14 @@ components:
     textColor: "{colors.black-4}"
     typography: "{typography.body-base}"
   amount-tile-selected:
-    backgroundColor: "{colors.primary}"
+    backgroundColor: "{colors.primary-button}"
     textColor: "{colors.white}"
     periodOpacity: 0.8
   amount-tile-popular-banner:
-    backgroundColor: "{colors.primary}"
+    backgroundColor: "{colors.primary-button}"
     selectedBackground: "{colors.primary} @ 80% over white"
     textColor: "{colors.white}"
-    typography: "{typography.label}"
+    typography: "{typography.label-1}"
     height: 24px
   amount-picker-custom:
     component: "{components.button-text}"
@@ -405,33 +418,119 @@ components:
 
 ## Overview
 
-Ketto is a crowdfunding and giving platform. The experience is a **balanced mix**: **story first**, with photos and beneficiary narratives drawing people in; **trust close behind**, with verified badges, raised amounts and progress bars; and **urgency only on campaign pages**, where the donate CTA and deadlines matter.
+Ketto is a crowdfunding and giving platform. People come to Ketto to raise funds for medical emergencies, education and other causes, or to donate and give back, once or every month through SIP.
 
-The canvas is a near-white **`{colors.white}`** (#FCFCFC) with dark-grey ink (`{colors.black-5}` #404040) for text, never pure black. **Ketto Teal** (`{colors.primary}` #288B91) is the brand accent. It appears as **a few accents per screen**: the main CTA, links, active tabs, progress bars and key icons.
+Ketto stands for hope and generosity. When someone donates, they create hope, and Ketto is the channel that carries it. Because trust is the biggest challenge for any crowdfunding platform, Ketto also has to be reliable and authentic, so that it becomes the go-to place for donations.
 
-Type is **Proxima Nova** for everything functional. **Source Serif Pro Bold Italic** is reserved for Display headings, the one emotional, editorial voice in the system.
+The experience is a **balanced mix**: **story first**, with photos and beneficiary narratives drawing people in; **trust close behind**, with verified badges, raised amounts and progress bars; and **urgency only on campaign pages**, where the donate CTA and deadlines matter.
 
-The shape language is **soft and pill-shaped**. Every button, chip and icon button is fully rounded. Cards and surfaces round by their size (16px or 24px), and there are no hard corners on interactive elements.
+---
 
-**Key Characteristics**
-- One brand accent, used as a few moments per screen rather than as a flood of colour.
+## Voice and Tone
+
+Ketto's voice comes from four values. Use them as a guideline for **every decision, not just copy**: words, imagery, layout and which features a screen highlights. When a decision is unclear, choose the option that best serves these values.
+
+| Value | Meaning | What it means for copy | What it means for UI |
+|---|---|---|---|
+| **Human** | Our audience interacts most with human causes like medical emergencies and education fundraisers, so this feeling should be a focal point. | Make cause pages feel "human". | Use images rather than illustrations. |
+| **Hopeful** | When someone donates, they create hope. Their intention is to spread positivity and create impact, and Ketto should come across as a channel for that hope. | Write copy that communicates hope. | Highlight success stories and regular donation updates. |
+| **Reliable** | The biggest challenge for any crowdfunding platform is trust. A sense of authenticity is crucial to making Ketto the go-to place for donations. | Explain how things work plainly. | Add How-it-works sections to major screens, and trust markers like Ketto Promise and Assured Protection to donation pages. |
+| **Giving** | People come to Ketto to donate or give back. That should feel hopeful, generosity should feel rewarding, and the ecosystem of giving should give back. | Make the main messaging on pages clear and generous. | Highlight tax benefits, monthly rewards and the loyalty program. |
+
+---
+
+## Guiding Principles
+
+The design decisions behind the system.
+
+### Human Centric Imagery
+
+To create an emotional connection with users, Ketto uses happy and hopeful imagery that humanizes its core products and makes them more relatable. Illustrations are kept to a minimum, as they proved less effective in resonating with the audience.
+
+### Dual Font System
+
+A dual-font system combines serif and sans-serif typefaces to create strong visual impact. **Proxima Nova** was selected for its formal style and taller x-height, and **Source Serif Pro (italic)** complements it with a classic serif touch. Proxima Nova carries everything functional; Source Serif Pro Bold Italic is reserved for Display headings, the one emotional, editorial voice in the system.
+
+### Accents
+
+A line-art version of the Ketto bird is a branding element across product pages, creating a distinctive identity. Line art is also layered over images to add character, accentuate the style and establish a cohesive visual language.
+
+### UX Writing
+
+Copy uses targeted messaging rather than generic language. For example, medical causes adopt an urgent tone, while animal causes focus on evoking empathy. The content strategy is structured around the four core values in [Voice and Tone](#voice-and-tone), with positive messaging such as "Giving that gives back" and "Big impact with small actions". Trust and reliability markers strengthen the brand's credibility.
+
+### Product Layout
+
+The design is light and minimalist, using white space strategically and minimal colours to enhance contrast and visual delight.
+
+### Restrained Colour
+
+The canvas is a near-white `{colors.white}` with dark-grey ink (`{colors.black-5}`) for text, never pure black. **Ketto Teal** appears as **a few accents per screen**: the main CTA, links, active tabs, progress bars and key icons.
+
 - **Primary buttons are always teal**, on every product and every screen.
 - App screens are primarily white. Product accent colours are for promotional and marketing surfaces.
-- A serif Display face for emotional headlines; a clean sans for everything else.
-- Pill-shaped everything; card radius depends on size.
-- Mostly flat surfaces, with one soft shadow tier for floating elements.
-- Modular layout: modules stack with 0px between them, and each module carries its own 24px padding.
-- An 8pt spacing system with 4px and 12px half-steps.
+
+### Soft Shapes
+
+The shape language is **soft and pill-shaped**. Every button, chip and icon button is fully rounded, cards and surfaces round by their size (16px or 24px), and there are no hard corners on interactive elements.
+
+### Flat, Modular Layout
+
+- Surfaces are mostly flat, with one soft shadow tier for floating elements.
+- Sections stack with 0px between them, and each section carries its own 24px padding.
+- Spacing follows an 8pt system with 4px and 12px half-steps.
+
+---
+
+## Do's & Don'ts
+
+The most important rules from across the system, in one place. Each section below has its own **Rules** with the details.
+
+| ✅ Do | ❌ Don't |
+|---|---|
+| Use teal as **a few accents per screen**: the main CTA, links, active tabs, progress bars | Flood screens with teal or use it for large backgrounds |
+| Keep **primary buttons teal**, on every product and screen | Recolour primary buttons for a product (e.g. purple for Animal SIP) |
+| Keep app screens **primarily white**; save product accents for promotional surfaces | Mix product accents on one surface |
+| Use `black-5` and `black-4` for text | Use pure black for text |
+| Use **Display (serif)** at most once per screen, for emotional headlines | Use Display for functional UI |
+| Take every size from the **spacing scale** and the **Roundness** rule | Invent one-off spacing or corner values |
+| Stack sections with **0px** between them | Add gaps between sections |
+| Pair a Primary button with **Tonal, Ghost or Text** | Put two primaries side by side |
+| Use **Fill – Default** on light backgrounds and **Fill – White** on dark ones | Use Fill – White on light backgrounds, or Fill – Default on dark ones |
+| For danger, prefer **Tonal, Ghost or Text** | Use a Primary danger button except in extreme cases |
+| Keep surfaces **flat**; use the shadow only for floating elements | Add shadows to cards and sections at rest |
+| Use the **Indian number format**: ₹12,34,567, 22L, 3Cr | Use millions or billions (2.2M) or Western grouping (1,234,567) |
+| Write exact money amounts **in full** | Abbreviate amounts on payment screens and receipts |
+| Ask for **min and max custom amounts** before any donation-flow project | Assume default donation limits |
+| Pair every state with an **icon or text** | Show a state with colour alone |
 
 ---
 
 ## Colors
 
-### Brand
-- **Ketto Teal** (`{colors.primary}` #288B91): primary CTAs, links, active tabs, progress bars, selected states and key icons. Use as a few accents per screen, not as large backgrounds.
-- **Teal Hover** (`{colors.primary-hover}` #1D6266): the hover state of filled teal elements, and small teal text on white (it passes contrast).
-- **Teal Pressed** (`{colors.primary-pressed}` #174A4D): the pressed state, and text on `primary-light` surfaces. _Figma name: `ketto/tertiary`._
-- **Teal Light** (`{colors.primary-light}` #DDF6F7): tonal button fills, selected chips, progress tracks, the active nav indicator, and soft brand surfaces. _Renamed from `ketto/disabled` to `ketto/light`._
+### Teal Scale
+
+Ketto Teal runs from **50** (lightest) to **900** (darkest). **500 is the brand teal**, #288B91. The scale was built around the existing Figma teals, which sit at 100, 500, 700 and 800.
+
+| Step | Hex | Contrast with `white` | Role / use |
+|---|---|---|---|
+| `teal-50` | #EEFAFB | 1.0:1 | Faintest tint: large soft backgrounds |
+| `teal-100` | #DDF6F7 | 1.1:1 | **`primary-light`**: tonal button fills, selected chips, progress tracks, active nav indicator |
+| `teal-200` | #B0DBDE | 1.5:1 | Borders on teal surfaces, illustrations |
+| `teal-300` | #82C0C4 | 2.0:1 | Illustrations, decorative fills |
+| `teal-400` | #55A6AA | 2.8:1 | Illustrations, icons on dark backgrounds |
+| `teal-500` | #288B91 | 3.9:1 | **`primary`**, the brand teal: progress bars, selected states, key icons, large teal text |
+| `teal-600` | #22767C | 5.2:1 ✓ | **`primary-button`**: primary button fills (white labels pass WCAG AA) |
+| `teal-700` | #1D6266 | 6.8:1 ✓ | **`primary-hover`**: hover state of primary buttons; small teal text on white |
+| `teal-800` | #174A4D | 9.6:1 ✓ | **`primary-pressed`**: pressed state; text on `teal-100` surfaces |
+| `teal-900` | #0F3032 | 13.8:1 ✓ | Deepest teal: dark surfaces, high-contrast text |
+
+✓ = white text on this step passes WCAG AA (4.5:1) at any size.
+
+- **Primary buttons use `teal-600`**, one step darker than the brand teal, so white labels are readable.
+- Hover and pressed go one step darker each: 700, then 800.
+- **Any text in teal, or white text on teal, uses `teal-600` or darker.** This covers button labels, links, tab labels and selected tiles.
+- Use **500** for non-text teal: progress bars, indicators, icons, borders and checkboxes.
 
 ### Product Accents
 Each accent has four levels. Levels 1–3 are for backgrounds, and level 4 is for titles and body text.
@@ -445,8 +544,6 @@ Each accent has four levels. Levels 1–3 are for backgrounds, and level 4 is fo
 | **Orange** | — | Minimal: illustrations and soft card backgrounds only |
 
 > **Guideline, not a hard rule.** Product accents are for **promotional cards, banners, campaigns and social media**. App screens stay **primarily white**, and **primary buttons are always `primary` teal**, whatever the product. Inside the app, accents appear only as small touches, such as the blue "new" badge.
-
-Don't mix product accents on one surface. Green and orange never carry meaning.
 
 | Level | Blue | Green | Orange | Purple |
 |---|---|---|---|---|
@@ -478,6 +575,14 @@ Don't mix product accents on one surface. Green and orange never carry meaning.
 
 ### Scrim
 - **Scrim** (`{colors.scrim}`): black at 32% opacity, behind dialogs and modal bottom sheets.
+
+### Rules
+- Use teal as **a few accents per screen**, never as large backgrounds.
+- **Primary buttons are always teal**, whatever the product.
+- App screens stay **primarily white**. Product accents (purple, blue) are for promotional cards, banners, campaigns and social media; inside the app they appear only as small touches, such as the "new" badge.
+- Don't mix product accents on one surface.
+- Green and orange are for illustrations and soft card backgrounds only; they never carry meaning.
+- Text is never pure black: use `black-5` for primary text and `black-4` for secondary text.
 
 ---
 
@@ -511,9 +616,10 @@ The root font size is **14px**, so `1rem = 14px`.
 | `subtitle-sm` | 12px (0.857) | 700 Bold | 130% | 0 | Chip labels, small emphasis |
 | `tag-xsmall` | 10px (0.714) | 400 Regular | 130% | 0 | Tiny meta |
 | `tag-xsmall-bold` | 10px (0.714) | 700 Bold | 130% | 0 | Nav bar labels, badges |
-| `label` | 12px (0.857) | 700 Bold | 130% | 10% | UPPERCASE tags, labels, and small button labels |
+| `label-1` | 12px (0.857) | 700 Bold | 130% | 10% | UPPERCASE tags and labels |
+| `label-2` | 12px (0.857) | 700 Bold | 130% | 10% | UPPERCASE small button labels |
 
-### Principles
+### Rules
 - **Titles use Headings. Body copy and subtitles use Body and Subtitle. Tags use Tags and Labels.**
 - **Display is limited.** Use it only for stylistic headings that create visual impact, and at most once per screen. It's the brand's emotional voice, so don't use it for functional UI.
 - Headings are Semibold; only `h1` goes ExtraBold, as the single heaviest moment on a page.
@@ -521,74 +627,135 @@ The root font size is **14px**, so `1rem = 14px`.
 
 ---
 
-## Layout
+## Shape
 
-### Spacing System
-- **Base unit:** 8px, with **4px and 12px half-steps**.
-- **Tokens:** `xxs` 4 · `xs` 8 · `sm` 12 · `base` 16 · `md` 24 · `lg` 32 · `xl` 40 · `xxl` 48 · `section` 64.
+The basic building blocks every component uses: spacing, corners and depth.
 
-### Grids
-Grids are **guidelines, not strict rules**.
+### Spacing Scale
 
-| Platform | Width | Columns | Margin | Gutter (Default / Loose) |
-|---|---|---|---|---|
-| Android | 360dp | 12 | 16 | 8 / 16 |
-| iOS / mobile web | 375pt | 12 | 16 | 8 / 16 |
-| Desktop web (≥768px) | max 1440px | 12 | _TBD_ | 24 |
+Spacing is based on **8px**, with **4px and 12px half-steps** for tight spots. Use only these values.
 
-The standard design frame is **375 × 812px**.
-
-### Modules
-Ketto is **modular**. Modules stack with **0px** between them. Inside a module:
-
-| Type | Top/bottom padding | Gap between elements |
+| Token | Value | Typical use |
 |---|---|---|
-| Default | 24px | 16px |
-| Loose | 24px | 24px |
-
-### Element Widths (375px, Default grid)
-Content width is 375 − 2 × 16 = **343px**.
-
-| Layout | Width |
-|---|---|
-| Full width | 343px |
-| Large card | 255px |
-| Two across (1:1) | 168px |
-| Medium card | 168px |
-| Three across (1:1:1) | 109px |
-| Small card | 109px |
-| Carousel 2:1 | 226px |
-| Carousel 7:5 | 197px |
-| Campaign Card | 265px |
-
-**Card width standards:**
-- **Full:** 343px (edge-to-edge, minus gutters)
-- **Large:** 255px (Cause Card, multi-section cards)
-- **Medium:** 168px (smaller grouped cards)
-- **Small:** 109px (compact cards, 3 across)
-
-Carousel cards are narrower than the screen so the next card peeks in, which shows the row scrolls.
+| `xxs` | 4px | Icon-to-text gap, label-to-field gap |
+| `xs` | 8px | Gap between cards side by side, small stacks |
+| `sm` | 12px | Chip padding, compact list rows |
+| `base` | 16px | Screen margins, card padding, Default gap inside a section |
+| `md` | 24px | Section padding (top and bottom), Loose gap inside a section |
+| `lg` | 32px | Large separations inside a page |
+| `xl` | 40px | Rare: extra breathing room |
+| `xxl` | 48px | Touch targets, large separations |
+| `section` | 64px | Desktop page sections |
 
 ### Roundness
-Pick the radius from the element's size.
+
+Pick the corner radius from the element's size (its larger side).
 
 | Element size | Radius |
 |---|---|
-| ≥ 315px | `lg` 24px |
-| 110–314px | `base` 16px |
-| < 110px | 24px or more, usually `full` |
+| 315px or more | `lg` 24px |
+| 100–314px | `base` 16px |
+| Under 100px | 24px or more, usually `full` (pill or circle) |
 
 Exceptions: text fields use 16px at any width; checkboxes use 2px; snackbars and plain tooltips use 8px.
 
----
-
-## Elevation
+### Elevation
 
 Ketto is **mostly flat**. There are two tiers:
 
-- **Flat:** pages, modules, cards at rest, inputs and lists. This covers almost every surface. Use a `black-2` border or a `black-1` fill to separate surfaces, not a shadow.
-- **Float** (`0 2px 8px rgba(0,0,0,0.08)`): anything that floats above content, such as sticky donate bars, bottom sheets, menus, snackbars and hovered cards. _The exact value is derived._
+- **Flat:** pages, sections, cards at rest, inputs and lists. This covers almost every surface. Separate surfaces with a `black-2` border or a `black-1` fill, not a shadow.
+- **Float** (`0 2px 8px rgba(0,0,0,0.08)`): anything that floats above content, such as sticky donate bars, bottom sheets, menus, snackbars and hovered cards.
 - **Scrim:** black at 32% behind modals.
+
+### Rules
+- Use **only** values from the spacing scale. No one-off values.
+- Pick every corner radius from the **Roundness** rule by size; the only exceptions are the ones listed above.
+- Separate surfaces with a `black-2` border or a `black-1` fill, not a shadow.
+- Use the **Float** shadow only for elements that float above content.
+
+---
+
+## Screen Layout
+
+Layout works in three levels, from the outside in. Grids are **guidelines, not strict rules**.
+
+```
+┌──────────── L1 · Screen (375px) ────────────┐
+│16│ ┌──────── L2 · Section ──────────────┐ │16│
+│  │ │ 24px padding                        │ │  │
+│  │ │ ┌─ L3 card ─┐  8  ┌─ L3 card ─┐   │ │  │
+│  │ │ └───────────┘     └───────────┘   │ │  │
+│  │ │ 16px gap (Default) / 24px (Loose)  │ │  │
+│  │ │ ┌──────────── L3 card ─────────┐   │ │  │
+│  │ │ └──────────────────────────────┘   │ │  │
+│  │ │ 24px padding                        │ │  │
+│  │ └─────────────────────────────────────┘ │  │
+│  │ ← 0px between sections →                 │  │
+│  │ ┌──────── next section ───────────────┐ │  │
+└─────────────────────────────────────────────┘
+```
+
+### L1 · Screen
+
+The frame everything sits in.
+
+| | Mobile (app + web) | Desktop web |
+|---|---|---|
+| **Screen size** | **375 × 812px** (standard design frame). Android: 360dp. | 768px and up, content max **1440px** |
+| **Side margins** | **16px** | _TBD_ |
+| **Columns** | 12 | 12 |
+| **Space between sections** | **0px**: sections stack directly | **0px** |
+
+- **Margin:** the empty space between the screen edge and the content.
+- Content width on mobile is 375 − 2 × 16 = **343px**.
+
+### L2 · Sections
+
+Ketto is **modular**: every screen is a stack of sections, and every section uses the same internal spacing.
+
+| | Default | Loose |
+|---|---|---|
+| **Top and bottom padding** | 24px | 24px |
+| **Gap between elements** (gutter) | 16px | 24px |
+| **Use for** | **Dense content**: lists, card grids, forms | **Airy content**: hero, story and impact sections |
+
+- **Gutter:** the space between elements inside a section.
+- Use one spacing type per section; don't mix Default and Loose in the same section.
+
+### L3 · Elements / UI Cards
+
+Standard widths for cards and elements on the 375px screen. **Heights always hug the content.**
+
+**Column cards** fill the content width.
+
+| Card | Width | How it's derived |
+|---|---|---|
+| Full width | **343px** | The whole content width |
+| Two across | **168px** | (343 − 8) ÷ 2 |
+| Three across | **109px** | (343 − 2 × 8) ÷ 3 |
+
+Side-by-side cards are 8px apart.
+
+**Carousel cards** sit in a horizontal row that scrolls. They're narrower than the screen so the next card peeks in, which shows the row scrolls.
+
+| Size | Width |
+|---|---|
+| Large | **255px** |
+| Medium | **226px** |
+| Small | **197px** |
+
+**Component cards** with their own fixed width:
+
+| Card | Width |
+|---|---|
+| [Campaign Card](#campaign-card-fundraiser) | **265px** |
+
+### Rules
+- Grids are **guidelines, not strict rules**.
+- Sections stack with **0px** between them; each section carries its own 24px padding.
+- Use **Default** spacing for dense content and **Loose** for airy content, and only one type per section.
+- Cards side by side are **8px** apart.
+- Card heights always **hug** their content.
 
 ---
 
@@ -600,10 +767,10 @@ All buttons are **pill-shaped** (`full`). Hierarchy follows Material Design 3.
 
 | Level | Style | Look | Use |
 |---|---|---|---|
-| Primary | **Fill – Default** | `primary` fill, white label | The single most important action on a light background |
-| | **Fill – White** | `white` fill, `primary` label | The same action on dark or coloured backgrounds |
-| Secondary | **Tonal** | `primary-light` fill, `primary` label | Beside a primary, e.g. *Login* next to *Sign up* |
-| Tertiary | **Ghost** | `black-2` outline, `primary` label | A lower-emphasis alternative |
+| Primary | **Fill – Default** | `primary-button` (`teal-600`) fill, white label | The single most important action on a light background |
+| | **Fill – White** | `white` fill, `teal-600` label | The same action on dark or coloured backgrounds |
+| Secondary | **Tonal** | `primary-light` fill, `teal-600` label | Beside a primary, e.g. *Login* next to *Sign up* |
+| Tertiary | **Ghost** | `black-2` outline, `teal-600` label | A lower-emphasis alternative |
 | | **Text** | Label only | The least emphasis: *Skip*, *Learn more* |
 
 **Variants**
@@ -617,7 +784,7 @@ All buttons are **pill-shaped** (`full`). Hierarchy follows Material Design 3.
 |---|---|---|---|---|
 | Large | 315 × 60 | 255–343px | `subtitle-lg` | 20px |
 | Medium | 113 × 48 | 168–255px | `subtitle-base` | 16px |
-| Small | 84 × 32 | < 168px | `label` (UPPERCASE) | 12px |
+| Small | 84 × 32 | < 168px | `label-2` (UPPERCASE) | 12px |
 
 - **Padding:** 16px horizontal, 8px vertical.
 - **Icon positions:** trailing (`Sign up →`), leading (`🔍 Sign up`) or none.
@@ -626,18 +793,17 @@ All buttons are **pill-shaped** (`full`). Hierarchy follows Material Design 3.
 
 | Style | Hover | Pressed | Disabled |
 |---|---|---|---|
-| Fill – Default | `primary-hover` | `primary-pressed` | 38% opacity |
+| Fill – Default (`teal-600`) | `primary-hover` (`teal-700`) | `primary-pressed` (`teal-800`) | 38% opacity |
 | Danger fill | error + 8% black | error + 12% black | 38% opacity |
 | Fill – White / Tonal / Ghost / Text | + 8% teal layer | + 10% teal layer | 38% opacity |
 
 - **Keyboard focus:** a 2px `primary` ring, offset by 2px.
 
-**Do / Don't**
-- ✅ Pair Primary with Tonal, Ghost or Text.
-- ❌ Don't place two primaries (Fill – Default and Fill – White) side by side.
-- ✅ Use Fill – Default on light backgrounds and Fill – White on dark or coloured ones.
-- ❌ Don't use Fill – White on light backgrounds, or Fill – Default on dark or coloured ones.
-- ✅ For danger, prefer Tonal, Ghost or Text. Use a Primary danger button only in extreme cases.
+**Rules**
+- Pair a Primary button with **Tonal, Ghost or Text**. Never place two primaries (Fill – Default and Fill – White) side by side.
+- Use **Fill – Default** on light backgrounds and **Fill – White** on dark or coloured ones, never the other way round.
+- For danger, prefer **Tonal, Ghost or Text**. Use a Primary danger button only in extreme cases.
+- Primary buttons are always teal.
 
 ### Campaign Card (`fundraiser`)
 
@@ -647,9 +813,9 @@ The core crowdfunding card. It's photo-first: the beneficiary's image leads, and
 
 | # | Part | Spec |
 |---|---|---|
-| 1 | **Container** | **265 × 342px**. `white` surface, float shadow. Radius `base` 16px, following the Roundness rule for 110–314px elements. |
+| 1 | **Container** | **265 × 342px**. `white` surface, float shadow. Radius `base` 16px, following the Roundness rule for 100–314px elements. |
 | 2 | **Cover image** | **265 × 165px** (about 8:5), edge to edge and clipped to the card's top corners. Shows the beneficiary, never a stock image. |
-| 3 | **Urgency tag** (optional) | Pinned top-right over the image. `white` background with a rounded bottom-left corner, clock icon + the word **URGENT** in `label`, `error`. No countdown. **Appears 14 days before the campaign end date.** Size hugs the label (no fixed width). |
+| 3 | **Urgency tag** (optional) | Pinned top-right over the image. `white` background with a rounded bottom-left corner, clock icon + the word **URGENT** in `label-1`, `error`. No countdown. **Appears 14 days before the campaign end date.** Size hugs the label (no fixed width). |
 | 4 | **Title** | `h5` (20px, 120%) in `black-6`. Max 2 lines (48px), then truncate with "…". |
 | 5 | **Progress bar** | **6px** tall, full width (233px); `primary` indicator on a `black-1` track, `full` radius. |
 | 6 | **Amount** | 4px below the bar, one line. `body-base` (14px, 150%) in `black-5`: **₹56,902** in bold + "left to be raised" in regular. |
@@ -670,12 +836,12 @@ The homepage entry point for **monthly SIP** (recurring giving) causes. Unlike t
 
 | # | Part | Spec |
 |---|---|---|
-| 1 | **Container** | **255 × 310px**. `white` surface, `lg` 24px radius, float shadow. Padding 16px all sides. |
-| 2 | **Cover image** | **265 × 165px** (8:5 aspect ratio, fixed), edge to edge and clipped to the card's top corners. Shows the cause, never a stock image. |
-| 3 | **"new" badge** (optional) | Top-right over the image. **48 × 18px**. `blue-3` pill, white ★ icon + lowercase **new** in `subtitle-sm`, white. Blue marks a new launch. |
-| 4 | **Title** | `h4` in `black-6`, one line (e.g. *Save a Child*), truncate with "…". |
-| 5 | **Description** | `body-lg` in `black-4`, max 2 lines |
-| 6 | **Footer row** | Left: donor count in bold `black-6` in Indian format (e.g. **22L Donors**, **1.5L Donors**). Right: **SIGN UP** button (Fill – Default, `label`). |
+| 1 | **Container** | `white` surface, `lg` 24px radius, float shadow |
+| 2 | **Cover image** | Edge to edge, about **8:5** ratio, clipped to the card's top corners |
+| 3 | **"new" badge** (optional) | Top-right over the image. `blue-3` pill, white ★ icon + lowercase **new** in `subtitle-sm`, white. Blue marks a new launch. |
+| 4 | **Title** | `h5` (20px, 120%) in `black-6`, the same as the Campaign Card title. One line (e.g. *Save a Child*). |
+| 5 | **Description** | `black-4` regular, max 2 lines |
+| 6 | **Footer row** | Left: donor count in bold `black-6` (e.g. **22L Donors**; the Figma file shows "2.2M", which must be updated to Indian format). Right: **SIGN UP** button (Fill – Default, UPPERCASE). |
 
 **Campaign Card vs Cause Card**
 
@@ -698,28 +864,28 @@ A bottom sheet where the donor picks a **monthly** donation amount before paying
 | 1 | **Container** | Bottom sheet: `white` surface, 24px top corners, drag handle above the sheet. Padding 24px top and 16px sides (content width 343px). |
 | 2 | **Title** | "Select donation amount" in `h5`, `black-6` |
 | 3 | **Description** | `body-base` in `black-4`, 8px below the title; key words in bold (e.g. **every month**) |
-| 4 | **Amount tiles** | 24px below the description. 3 square tiles, **109 × 109px** with **8px** gaps (the 1:1:1 element width). 1px `black-2` border, **16px** radius (the Roundness rule for 110–314px). Amount in `h5` bold (`black-6`), with "per month" in `body-base` (`black-4`) below it, centred. |
-| 5 | **Popular banner** | A **24px** `primary` strip across the top of the middle tile, sharing the tile's top corners, with a 12px ★ + **POPULAR** in `label`, `white`. It highlights the tile but doesn't select it. |
-| 6 | **Custom amount** | 16px below the tiles. "Enter Custom Amount" as an underlined `primary` Text button in `subtitle-base`, centred, with a 48px touch target. Tapping it replaces the link with a **text field** (standard 56px Text Field with a ₹ prefix). |
+| 4 | **Amount tiles** | 24px below the description. 3 square tiles, **109 × 109px** with **8px** gaps (the three-across card width). 1px `black-2` border, **16px** radius (the Roundness rule for 100–314px). Amount in `h5` bold (`black-6`), with "per month" in `body-base` (`black-4`) below it, centred. |
+| 5 | **Popular banner** | A **24px** `primary-button` (`teal-600`) strip across the top of the middle tile, sharing the tile's top corners, with a 12px ★ + **POPULAR** in `label-1`, `white`. It highlights the tile but doesn't select it. |
+| 6 | **Custom amount** | 16px below the tiles. "Enter Custom Amount" as an underlined `teal-600` Text button in `subtitle-base`, centred, with a 48px touch target. Tapping it replaces the link with a **text field** (standard 56px Text Field with a ₹ prefix). |
 | 7 | **Footer** | 24px below the content, with a 1px `black-1` divider on top and 16px padding (plus the device safe area). It holds a full-width (343px) **Large** primary CTA. |
 
 **States**
 
 | State | Tiles | CTA |
 |---|---|---|
-| **Select amount** (initial) | No tile selected. All tiles are `white` with a `black-2` border; the Popular tile shows only its banner. | **Disabled** (`primary` at 38% opacity), labelled **"Select an amount"** |
-| **Selected** | The chosen tile fills with `primary` and its border drops. Text turns `white`, with "per month" at 80% opacity. On a selected Popular tile, the banner becomes **`primary` at reduced opacity (80%)**, so it reads lighter than the fill. | **Enabled** (`primary`), labelled with the amount: **"Pay ₹300/mo →"** |
+| **Select amount** (initial) | No tile selected. All tiles are `white` with a `black-2` border; the Popular tile shows only its banner. | **Disabled** (`primary-button` at 38% opacity), labelled **"Select an amount"** |
+| **Selected** | The chosen tile fills with `primary-button` (`teal-600`) and its border drops. Text turns `white`, with "per month" at 80% opacity. On a selected Popular tile, the banner becomes **`primary-button` at reduced opacity (80%)**, so it reads lighter than the fill. | **Enabled** (`primary-button`), labelled with the amount: **"Pay ₹300/mo →"** |
 
 **Rules**
 - Offer **three preset amounts**, with the middle one flagged **Popular**.
 - **Nothing is pre-selected.** The CTA stays disabled and reads "Select an amount" until the donor chooses one.
 - Once selected, the CTA label shows the amount and the billing period ("/mo").
 - Amounts follow the [Indian number format](#number--currency-format).
-- **Custom amount limits:** Default to ₹100 (minimum) and ₹300 (maximum) unless otherwise specified. Always confirm project-specific limits before executing. Before starting any project that involves a donation flow, ask: **"What are the minimum and maximum custom donation amounts?"**
+- **Custom amount limits are set per project.** Before starting any project that involves a donation flow, always ask: **"What are the minimum and maximum custom donation amounts?"** Don't assume defaults.
 
 ### Icon Buttons
-- Circular. Three sizes: 60px, 48px, and 32px buttons, with 24px, 20px, and 16px icons respectively.
-- **Styles:** Filled (`primary`), Tonal (`primary-light`), Outlined (`black-2` border), and Standard (no container, the most common).
+- Circular. Sizes match the buttons: 60, 48 and 32px, with 24, 24 and 16px icons.
+- **Styles:** Filled (`primary-button`), Tonal (`primary-light`), Outlined (`black-2` border), and Standard (no container, the most common).
 - **Toggles** (e.g. *favourite*): the icon switches from outlined to filled, in `primary`.
 - Always give an icon button an accessible label.
 
@@ -729,7 +895,7 @@ A bottom sheet where the donor picks a **monthly** donation amount before paying
 
 ### Cards
 - **Outlined** is the default (`white` + `black-2` border). **Filled** uses `black-1`. **Floating** uses the float shadow and is for special cases only.
-- Radius follows Roundness; padding 16px; widths follow Element Widths.
+- Radius follows [Roundness](#roundness); padding 16px; widths follow [L3 · Elements / UI Cards](#l3--elements--ui-cards).
 - Media fills the top of the card edge to edge.
 
 ### Text Fields
@@ -778,7 +944,7 @@ A bottom sheet where the donor picks a **monthly** donation amount before paying
 
 ### Tabs
 - 48px tall, `subtitle-base` labels.
-- **Active tab:** `primary` label and a 3px `primary` indicator. Inactive tabs are `black-4`.
+- **Active tab:** `teal-600` label and a 3px `primary` indicator. Inactive tabs are `black-4`.
 
 ### Lists
 - Items are 56, 72 or 88px tall (one, two or three lines), with 16px padding.
@@ -795,12 +961,7 @@ A bottom sheet where the donor picks a **monthly** donation amount before paying
 
 **Ketto always uses the Indian number system: lakhs and crores.** Never use millions or billions (M, B), anywhere in the app, on the web or in marketing.
 
-**Full numbers** use Indian digit grouping: the first comma after 3 digits, then every 2 digits.
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| ₹12,34,567 | ₹1,234,567 |
-| ₹56,902 | ₹56902 |
+**Full numbers** use Indian digit grouping: the first comma after 3 digits, then every 2 digits, e.g. **₹12,34,567** (not ₹1,234,567) and **₹56,902** (not ₹56902).
 
 **Abbreviated numbers** are for compact spaces: donor and supporter counts, card stats, and totals in headlines.
 
@@ -811,6 +972,7 @@ A bottom sheet where the donor picks a **monthly** donation amount before paying
 | 1,00,000 – 99,99,999 | L (lakh) | 22L, 1.5L |
 | ≥ 1,00,00,000 | Cr (crore) | 3Cr, 1.2Cr |
 
+### Rules
 - Use **at most one decimal**, and drop a trailing ".0" (write 2L, not 2.0L).
 - **No space** between the number and its unit (22L, not 22 L).
 - **Currency:** the ₹ symbol comes before the number with no space (₹56,902).
@@ -832,7 +994,7 @@ A bottom sheet where the donor picks a **monthly** donation amount before paying
 ---
 
 ## Accessibility
-- **Contrast:** body text needs at least 4.5:1. Use `black-5` or `black-4` on `white`, and `primary-hover` for small teal text.
+- **Contrast:** body text needs at least 4.5:1. Use `black-5` or `black-4` on `white`, and `teal-700` or darker for small teal text. Primary buttons use `teal-600`, so white labels pass AA.
 - **Focus:** every interactive element shows the 2px `primary` focus ring.
 - **Colour alone:** never show a state with colour alone; pair it with an icon or text.
 - **Motion:** respect `prefers-reduced-motion`.
@@ -841,22 +1003,21 @@ A bottom sheet where the donor picks a **monthly** donation amount before paying
 
 ## Known Gaps
 
-- **Primary button contrast:** white on `primary` (#288B91) is **4.0:1**, below WCAG AA (4.5:1) for button label sizes. This is a known, accepted gap for now.
+- **Guiding principle 1:** the principles shared start at number 2, so the first one is missing.
+- **Imagery library:** the image set for Human Centric Imagery is still to be shared.
+- **Line-art Ketto bird:** the asset, and rules for using it on pages and over images, are still to be shared.
 - **Desktop side margins:** not yet defined for the ≥768px grid.
+- **`label-1` vs `label-2`:** both are now 12px Bold UPPERCASE with 10% tracking, so they're identical. Clarify what distinguishes them, or merge them.
 - **`success` = `green-3`:** the same hex value. Decide whether they should stay linked or diverge.
 - **`error-light` (#FDE7E9):** derived, not yet in the Figma palette.
 - **Shadow value:** the single float shadow is confirmed as an approach; the exact value is derived.
 - **Motion:** no Ketto motion spec exists yet. Default to MD3 standard easing (`cubic-bezier(0.2,0,0,1)`, 200–300ms).
 - **Iconography:** the icon set, style and stroke aren't documented.
 - **Amount Picker sizes:** the tile size, spacing, text styles and the 80% banner opacity are best guesses from the system. Check them against Figma.
+- **Custom amount limits:** set per project. See the kickoff question in the Amount Picker rules.
 - **Product components:** the rest of the Donate flow (tip, payment) and SIP subscription management still need screens.
+- **Cause card measurements:** card width, padding, title and description sizes, and button size need confirming from Figma.
+- **Cause card donor count:** the Figma cards show "2.2M Donors" and need updating to Indian format ("22L Donors").
 - **MD3-based components:** Icon Buttons through Menus & Tooltips are adapted from Material Design 3 and should be replaced by Ketto designs over time.
 - **Dark mode:** not defined.
 - **Loading and skeleton states:** not defined.
-
-### Fixed
-- ✅ **Roundness boundary:** clarified as 110px (was ambiguous at 100px)
-- ✅ **Typography:** merged `label-1` and `label-2` into single `label` token
-- ✅ **Icon button sizes:** locked at 24px, 20px, 16px per button size (60px, 48px, 32px)
-- ✅ **Cause card measurements:** width 255px (Large), height 310px, padding 16px, image 265×165px fixed, badge 48×18px, donor count in Indian format
-- ✅ **Custom donation limits:** default to ₹100–₹300, confirm per project
