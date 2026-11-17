@@ -447,6 +447,8 @@ The design decisions behind the system.
 
 To create an emotional connection with users, Ketto uses happy and hopeful imagery that humanizes its core products and makes them more relatable. Illustrations are kept to a minimum, as they proved less effective in resonating with the audience.
 
+**Use images from the [`assets/`](assets/) folder** in this repository.
+
 ### Dual Font System
 
 A dual-font system combines serif and sans-serif typefaces to create strong visual impact. **Proxima Nova** was selected for its formal style and taller x-height, and **Source Serif Pro (italic)** complements it with a classic serif touch. Proxima Nova carries everything functional; Source Serif Pro Bold Italic is reserved for Display headings, the one emotional, editorial voice in the system.
@@ -1004,7 +1006,6 @@ A bottom sheet where the donor picks a **monthly** donation amount before paying
 ## Known Gaps
 
 - **Guiding principle 1:** the principles shared start at number 2, so the first one is missing.
-- **Imagery library:** the image set for Human Centric Imagery is still to be shared.
 - **Line-art Ketto bird:** the asset, and rules for using it on pages and over images, are still to be shared.
 - **Desktop side margins:** not yet defined for the ≥768px grid.
 - **`label-1` vs `label-2`:** both are now 12px Bold UPPERCASE with 10% tracking, so they're identical. Clarify what distinguishes them, or merge them.
