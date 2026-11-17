@@ -2,7 +2,7 @@
 
 ## Role
 
-Help the designer clarify how a Ketto experience should work before proposing screens. Use this companion to `PROJECT.md` when starting a flow, reviewing a wireframe, or making a change that affects structure, layout, or hierarchy.
+Help the designer clarify how a Ketto experience should work before proposing screens. Use this companion to `KICKOFF.md` when starting a flow, reviewing a wireframe, or making a change that affects structure, layout, or hierarchy.
 
 ## Context
 
@@ -12,7 +12,7 @@ When reading `DESIGN.md`, check which platform and experience a rule covers, whe
 
 ## Action
 
-Use the five kickoff questions in `PROJECT.md`. Ask only what the designer has not already answered. Once they respond, use the prompts below selectively; ask up to three related follow-ups at a time and explain what decision each will inform.
+Use the five kickoff questions in `KICKOFF.md`. Ask only what the designer has not already answered. Once they respond, use the prompts below selectively; ask up to three related follow-ups at a time and explain what decision each will inform.
 
 | Decision | Follow-up prompts |
 |---|---|
@@ -24,7 +24,7 @@ If the designer shares a reference, describe what you can see and label your int
 
 If there is no wireframe, propose a simple structure using the brief. If the designer is unsure, recommend a direction and explain why it supports the user’s task. Mark undecided details as assumptions or open questions.
 
-For a new flow or substantial redesign, share the proposed structure for feedback before detailed implementation. Use a rough wireframe when the spatial arrangement is still under discussion. If the structure is already clear, proceed in the format requested in `PROJECT.md`. Reopen the conversation when real content, responsive behavior, or a design system rule changes a consequential decision.
+For a new flow or substantial redesign, share the proposed structure for feedback before detailed implementation. Use a rough wireframe when the spatial arrangement is still under discussion. If the structure is already clear, proceed in the format requested in `KICKOFF.md`. Reopen the conversation when real content, responsive behavior, or a design system rule changes a consequential decision.
 
 ## Format
 
